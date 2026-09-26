@@ -30,8 +30,7 @@ export default function Checkout() {
   const balanceAfterToken = totalAmount - advanceAmount;
 
   const [payMode, setPayMode] = useState('escrow');
-  const [tenure, setTenure] = useState(9); 
-  const [zeroCostEmi, setZeroCostEmi] = useState(false);
+  const [tenure, setTenure] = useState(6); // Default 6 months for Zero-Cost
 
   const [step, setStep] = useState(1); 
 
@@ -66,7 +65,7 @@ export default function Checkout() {
       const publicKey = "JZtH1oQcCJ82J4w7l";
 
       const templateParams = {
-        to_email: recipientEmail, // Exact user/judge email input
+        to_email: recipientEmail,
         phone_number: targetPhone || "9837044102",
         message: messageText,
         app_name: "Wedding Granth (AfterUs Global)"
@@ -93,7 +92,9 @@ export default function Checkout() {
     }
   };
 
-  const annualInterestRate = zeroCostEmi ? 0 : 0.12; 
+  // DYNAMIC INTEREST RATE LOGIC: <= 6 Months gets 0%, > 6 Months gets 12% p.a.
+  const isZeroCost = tenure <= 6;
+  const annualInterestRate = isZeroCost ? 0 : 0.12; 
   const monthlyInterestRate = annualInterestRate / 12;
 
   const emiAmount = monthlyInterestRate === 0 
@@ -209,14 +210,14 @@ export default function Checkout() {
     const contractContent = `
 ==================================================
         WEDDING GRANTH (AFTERUS GLOBAL)
-         OFFICIAL ESCROW SMART CONTRACT
+        OFFICIAL ESCROW SMART CONTRACT
 ==================================================
 - Vendor Name: ${vendor.name}
 - Total Contract Value: ₹ ${totalAmount.toLocaleString('en-IN')}
 - 40% Advance Token Paid (Verified UTR: ${utrNumber || 'VERIFIED'}): ₹ ${advanceAmount.toLocaleString('en-IN')}
 - 40% Setup Proof Milestone: ₹ ${setupProofAmount.toLocaleString('en-IN')}
 - 20% Final Handover Milestone: ₹ ${finalHandoverAmount.toLocaleString('en-IN')}
-- Financing Mode: ${payMode === 'bnpl' ? `EMI Active (${tenure} Months @ ₹${emiAmount.toLocaleString('en-IN')}/mo \vert{} Interest:${zeroCostEmi ? '0%' : '12% p.a.'})` : 'Upfront Escrow (40-40-20 Milestone Framework)'}
+- Financing Mode: ${payMode === 'bnpl' ? `EMI Active (${tenure} Months @ ₹${emiAmount.toLocaleString('en-IN')}/mo \vert{} Interest:${isZeroCost ? '0% (Zero-Cost)' : '12% p.a.'})` : 'Upfront Escrow (40-40-20 Milestone Framework)'}
 - Client Mobile: +91 ${clientPhone || '98XXXXXXXX'}
 - Client Email: ${clientEmail || 'user@gmail.com'}
 ==================================================
@@ -247,7 +248,7 @@ export default function Checkout() {
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-3">Token & Contract Locked Successfully!</h2>
           <p className="text-gray-600 font-sans text-sm mb-6">
             {payMode === 'bnpl' 
-              ? `40% advance verified. Remaining balance of ₹${balanceAfterToken.toLocaleString('en-IN')} structured into ${tenure}-Month EMI of ₹${emiAmount.toLocaleString('en-IN')}/mo.` 
+              ? `40% advance verified. Remaining balance of ₹${balanceAfterToken.toLocaleString('en-IN')} structured into ${tenure}-Month EMI of ₹${emiAmount.toLocaleString('en-IN')}/mo (${isZeroCost ? 'Zero-Cost' : '12% p.a.'}).` 
               : `40% advance token verified via UTR. 40-40-20 Escrow milestones activated successfully.`}
           </p>
 
@@ -546,7 +547,7 @@ export default function Checkout() {
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Select Tenure</label>
+                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Select Tenure (3 or 6 Mos = Zero Cost | 9 or 12 Mos = 12% p.a.)</label>
                       <div className="grid grid-cols-4 gap-2">
                         {[3, 6, 9, 12].map((m) => (
                           <button
@@ -561,19 +562,6 @@ export default function Checkout() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-gray-50 p-3 rounded-xl border border-gray-200">
-                      <div>
-                        <p className="text-xs font-bold text-gray-900">Zero-Cost EMI Subsidy</p>
-                        <p className="text-[10px] text-gray-500">0% Interest (Sponsored)</p>
-                      </div>
-                      <input 
-                        type="checkbox" 
-                        checked={zeroCostEmi}
-                        onChange={(e) => setZeroCostEmi(e.target.checked)}
-                        className="w-4 h-4 accent-[#8B0000] cursor-pointer"
-                      />
-                    </div>
-
                     <div className="pt-2 border-t border-gray-100 flex justify-between items-center">
                       <div>
                         <p className="text-[10px] text-gray-400 uppercase font-bold">Calculated Monthly EMI</p>
@@ -581,7 +569,7 @@ export default function Checkout() {
                       </div>
                       <div className="text-right">
                         <p className="text-[10px] text-gray-400 uppercase font-bold">Interest Rate</p>
-                        <p className="text-sm font-bold text-gray-900">{zeroCostEmi ? '0% (Free)' : '12% p.a.'}</p>
+                        <p className="text-sm font-bold text-gray-900">{isZeroCost ? '0% (Zero-Cost)' : '12% p.a.'}</p>
                       </div>
                     </div>
                   </div>
