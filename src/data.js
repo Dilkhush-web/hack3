@@ -22,8 +22,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_170/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Rahul Sharma", rating: 5, comment: "Absolute professional work. The escrow milestone system gave us complete peace of mind." },
@@ -53,8 +53,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_170/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Aman Verma", rating: 5, comment: "Cinematic quality is top-notch. Worth every rupee!" }
@@ -83,8 +83,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_170/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
-      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Neha Gupta", rating: 5, comment: "Drone shots were breathtaking!" }
@@ -113,8 +113,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-      "https://www.w3schools.com/html/mov_bbb.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Vikramaditya", rating: 5, comment: "Royal hospitality at its peak." }
@@ -143,8 +143,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-      "https://www.w3schools.com/html/mov_bbb.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Meera Sen", rating: 5, comment: "Pastel decor was dreamy!" }
@@ -173,8 +173,8 @@ export const vendors = [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800"
     ],
     videos: [
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-      "https://www.w3schools.com/html/mov_bbb.mp4"
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/v1787917010/Lyrics_meant_for_you_%EF%B8%8F_kunjaldoriya_Outfit--__jaamsho__Video_credit--_seven__vows_..._jxpf5s.mp4",
+      "https://res.cloudinary.com/doa6d6cyf/video/upload/a_270/v1787916986/AQOh5CnV93RYX0F0txPga1tKGKj_kykmsMffYLS8HbCW7rH5vVKgk_gpum_2R8Mr8DqsdaXwHFSR03jZIWSuFWDFLJFw0Zjj_oqjx5c.mp4"
     ],
     reviews: [
       { user: "Swati Roy", rating: 5, comment: "Flawless airbrush makeup!" }

@@ -14,7 +14,6 @@ export default function VendorAuth() {
   const [otpStep, setOtpStep] = useState(false);
   const [otpVal, setOtpVal] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [generatedLoginOtp, setGeneratedLoginOtp] = useState('');
 
   // Register States
   const [businessName, setBusinessName] = useState('');
@@ -26,7 +25,6 @@ export default function VendorAuth() {
   const [regOtpStep, setRegOtpStep] = useState(false);
   const [regOtpVal, setRegOtpVal] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
-  const [generatedRegOtp, setGeneratedRegOtp] = useState('');
 
   const categories = ['Photography Studio', 'Destination', 'Makeup Artist', 'Event Planner'];
 
@@ -76,7 +74,6 @@ export default function VendorAuth() {
     }
     
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    setGeneratedLoginOtp(otp);
     
     sendEmailNotification(
       loginEmail,
@@ -103,7 +100,6 @@ export default function VendorAuth() {
     setTimeout(() => {
       setIsLoggingIn(false);
 
-      // Fetch saved profile from localStorage or create dynamic one
       const savedProfile = JSON.parse(localStorage.getItem(`vendor_${loginPhone}`)) || {
         name: `Studio Partner (${loginPhone.slice(-4)})`,
         category: "Photography Studio",
@@ -132,7 +128,6 @@ export default function VendorAuth() {
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    setGeneratedRegOtp(otp);
 
     sendEmailNotification(
       regEmail,
@@ -147,7 +142,7 @@ export default function VendorAuth() {
     }, 1200);
   };
 
-  // 4. Register Final Verification & Save to Storage
+  // 4. Register Final Verification & Save to Storage -> Navigates to Vendor Dash
   const handleFinalRegister = (e) => {
     e.preventDefault();
     if (!regOtpVal) {
@@ -175,7 +170,7 @@ export default function VendorAuth() {
     setIsRegistering(true);
     setTimeout(() => {
       setIsRegistering(false);
-      navigate('/vendor-profile-live', { state: { vendor: newVendorData } });
+      navigate('/vendor-dash', { state: { vendor: newVendorData } });
     }, 1500);
   };
 
@@ -267,7 +262,7 @@ export default function VendorAuth() {
               ) : (
                 <form onSubmit={handleVerifyLoginOtp} className="space-y-4">
                   <div className="bg-[#FDFBF7] p-3.5 rounded-xl border border-[#8B0000]/15 text-xs text-gray-600">
-                    OTP sent to email <b className="text-gray-900">{loginEmail}</b> for mobile <b className="text-gray-900">+91 {loginPhone}</b>.
+                    OTP sent successfully to email <b className="text-gray-900">{loginEmail}</b> for mobile <b className="text-gray-900">+91 {loginPhone}</b>.
                   </div>
 
                   <div>
@@ -390,7 +385,7 @@ export default function VendorAuth() {
               ) : (
                 <form onSubmit={handleFinalRegister} className="space-y-4">
                   <div className="bg-[#FDFBF7] p-3.5 rounded-xl border border-[#8B0000]/15 text-xs text-gray-600">
-                    Verification OTP sent to email <b className="text-gray-900">{regEmail}</b> for phone <b className="text-gray-900">+91 {regPhone}</b>.
+                    Verification OTP sent successfully to email <b className="text-gray-900">{regEmail}</b> for phone <b className="text-gray-900">+91 {regPhone}</b>.
                   </div>
 
                   <div>
@@ -412,7 +407,7 @@ export default function VendorAuth() {
                     className="w-full bg-[#8B0000] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#660000] transition shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isRegistering ? <Loader2 className="animate-spin" size={16} /> : <KeyRound size={16} />}
-                    {isRegistering ? 'Creating Node...' : 'Complete & Open Live Profile'}
+                    {isRegistering ? 'Creating Node...' : 'Complete & Open Vendor Dashboard'}
                   </button>
                 </form>
               )}
