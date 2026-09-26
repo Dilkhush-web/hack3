@@ -53,7 +53,7 @@ export default function ConciergeModal({ isOpen, onClose, vendorName = "Luxury W
           <div className="flex items-center space-x-3">
             {/* Logo Link - Yahan apna logo link daal lena */}
             <img 
-              src="https://via.placeholder.com/40" 
+              src="https://res.cloudinary.com/doa6d6cyf/image/upload/v1790335406/Untitled_design_1_1_ppduhi.png" 
               alt="AUG Logo" 
               className="w-10 h-10 rounded-full border-2 border-[#8B0000] object-cover bg-white" 
             />

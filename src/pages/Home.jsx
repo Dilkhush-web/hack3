@@ -19,11 +19,23 @@ export default function Home() {
     navigate('/vibe-matcher', { state: searchQuery });
   };
 
+  // 8 Curated Vendors - Exactly 2 from each category matching search options
   const topVendors = [
-    { name: "The Royal Haveli", category: "Destination Venues", price: "₹8.5L", img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" },
-    { name: "Glamour Studios", category: "Makeup Artists", price: "₹45k", img: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&q=80&w=800" },
-    { name: "Amit Photography", category: "Photography", price: "₹1.2L", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800" },
-    { name: "Elite Planners", category: "Event Planners", price: "₹3.0L", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" }
+    // 1. Photographers (2)
+    { name: "Amit Photography", category: "Photographers", basePrice: 120000, vibeTags: ["Cinematic", "Traditional"], image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800" },
+    { name: "Royal Lens Studio", category: "Photographers", basePrice: 150000, vibeTags: ["Candid", "Drone Shots"], image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800" },
+    
+    // 2. Destination Venues (2)
+    { name: "The Royal Haveli", category: "Destination", basePrice: 850000, vibeTags: ["Palace", "Heritage"], image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" },
+    { name: "Mussoorie Pine Resort", category: "Destination", basePrice: 650000, vibeTags: ["Mountain View", "Lawn"], image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" },
+
+    // 3. Makeup Artists (2)
+    { name: "Glamour Studios", category: "Makeup", basePrice: 45000, vibeTags: ["HD Bridal", "Airbrush"], image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&q=80&w=800" },
+    { name: "Elegance Glow Artistry", category: "Makeup", basePrice: 55000, vibeTags: ["Celebrity", "Natural"], image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" },
+
+    // 4. Event Planners (2)
+    { name: "Elite Planners", category: "Event", basePrice: 300000, vibeTags: ["Luxury Decor", "Full Management"], image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" },
+    { name: "Dream Makers Events", category: "Event", basePrice: 250000, vibeTags: ["Theme Decor", "Coordination"], image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800" }
   ];
 
   const faqs = [
@@ -131,13 +143,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. Top Verified Vendors (Linked with data.js mapping) */}
+      {/* 2. Top Verified Vendors (8 Vendors - 2 from each category) */}
       <section className="w-full py-24 bg-[#FDFBF7] relative z-10 border-b border-[#8B0000]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <div>
               <h2 className="text-3xl font-serif font-bold text-gray-900 mb-2">Verified Ecosystem Partners</h2>
-              <p className="text-gray-600 font-sans">Top curated professionals backed by our escrow guarantee from system.</p>
+              <p className="text-gray-600 font-sans">Top curated professionals across all categories backed by our escrow guarantee.</p>
             </div>
             <button onClick={handleSearch} className="flex items-center gap-2 text-[#8B0000] font-bold hover:text-[#660000] transition-colors">
               View Complete Directory <ChevronRight size={16} />
@@ -145,7 +157,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {vendors.slice(0, 4).map((vendor, idx) => (
+            {topVendors.map((vendor, idx) => (
               <div 
                 key={idx} 
                 onClick={() => navigate('/vibe-matcher', { state: { category: vendor.category, location: 'Dehradun', budget: vendor.basePrice } })}
@@ -163,7 +175,7 @@ export default function Home() {
                   <h3 className="text-lg font-serif font-bold text-gray-900 mb-2">{vendor.name}</h3>
                   <div className="text-[11px] text-gray-500 mb-4 line-clamp-1">{vendor.vibeTags?.join(' • ')}</div>
                   <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-                    <span className="text-xs text-gray-500 font-medium">EMI / Base</span>
+                    <span className="text-xs text-gray-500 font-medium">Starting from</span>
                     <span className="text-base font-bold text-gray-900">₹ {vendor.basePrice?.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
@@ -314,6 +326,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

@@ -14,6 +14,7 @@ export default function VendorAuth() {
   const [otpStep, setOtpStep] = useState(false);
   const [otpVal, setOtpVal] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [generatedLoginOtp, setGeneratedLoginOtp] = useState('');
 
   // Register States
   const [businessName, setBusinessName] = useState('');
@@ -25,13 +26,13 @@ export default function VendorAuth() {
   const [regOtpStep, setRegOtpStep] = useState(false);
   const [regOtpVal, setRegOtpVal] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
+  const [generatedRegOtp, setGeneratedRegOtp] = useState('');
 
   const categories = ['Photography Studio', 'Destination', 'Makeup Artist', 'Event Planner'];
 
   // --- EMAILJS REAL DISPATCHER (NO BACKEND REQUIRED) ---
   const sendEmailNotification = async (recipientEmail, targetPhone, messageText) => {
     try {
-      // EmailJS configuration variables (Apni actual keys yahan daal dena)
       const serviceID = "service_b182pds";
       const templateID = "template_0bafrtd";
       const publicKey = "JZtH1oQcCJ82J4w7l";
@@ -43,7 +44,6 @@ export default function VendorAuth() {
         app_name: "Wedding Granth (AfterUs Global)"
       };
 
-      // Direct client-side EmailJS trigger using fetch API
       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: {
@@ -75,12 +75,13 @@ export default function VendorAuth() {
       return;
     }
     
-    const generatedOtp = Math.floor(100000 + Math.random() * 900000);
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedLoginOtp(otp);
     
     sendEmailNotification(
       loginEmail,
       loginPhone,
-      `Wedding Granth Login OTP: ${generatedOtp}. This code is intended for mobile number +91 ${loginPhone}.`
+      `Wedding Granth Login OTP: ${otp}. This code is intended for mobile number +91 ${loginPhone}.`
     );
 
     setIsLoggingIn(true);
@@ -97,14 +98,18 @@ export default function VendorAuth() {
       alert("Please enter the verification OTP.");
       return;
     }
+
     setIsLoggingIn(true);
     setTimeout(() => {
       setIsLoggingIn(false);
+
+      // Fetch saved profile from localStorage or create dynamic one
       const savedProfile = JSON.parse(localStorage.getItem(`vendor_${loginPhone}`)) || {
         name: `Studio Partner (${loginPhone.slice(-4)})`,
         category: "Photography Studio",
         basePrice: 200000,
         phone: `+91 ${loginPhone}`,
+        email: loginEmail,
         location: "Dehradun"
       };
 
@@ -126,11 +131,13 @@ export default function VendorAuth() {
       return;
     }
 
-    const regOtp = Math.floor(100000 + Math.random() * 900000);
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedRegOtp(otp);
+
     sendEmailNotification(
       regEmail,
       regPhone,
-      `Wedding Granth Registration OTP: ${regOtp}. Complete your onboarding for mobile +91 ${regPhone}.`
+      `Wedding Granth Registration OTP: ${otp}. Complete your onboarding for mobile +91 ${regPhone}.`
     );
 
     setIsRegistering(true);
@@ -153,6 +160,7 @@ export default function VendorAuth() {
       category: category,
       basePrice: Number(basePrice),
       phone: `+91 ${regPhone}`,
+      email: regEmail,
       location: location
     };
 

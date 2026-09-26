@@ -1,75 +1,110 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, ShieldCheck, Lock } from 'lucide-react';
+import { ShieldCheck, Lock, Globe } from 'lucide-react';
 
 export default function Footer() {
-  // 👉 YAHAN APNA LOGO LINK DAAL SAKTE HO (Replace the placeholder URL below)
   const customLogoUrl = "https://res.cloudinary.com/doa6d6cyf/image/upload/v1790335406/Untitled_design_1_1_ppduhi.png";
 
   return (
-    <footer className="w-full bg-[#141414] text-[#FDFBF7] py-16 px-6 border-t border-[#8B0000]/30 font-sans relative overflow-hidden">
+    <footer className="w-full bg-[#0D0D0D] text-[#FDFBF7] pt-12 pb-8 px-6 lg:px-12 border-t border-[#8B0000]/30 font-sans relative overflow-hidden z-10">
       
-      {/* Background Glow Accent */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#8B0000]/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Background Ambient Glow Accents */}
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-[#8B0000]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-start pb-12 border-b border-white/10 relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start pb-10 border-b border-white/10 relative z-10">
         
-        {/* Left: Brand, Custom Logo Link & Tagline */}
-        <div className="md:col-span-5 space-y-4">
+        {/* Left Col: Brand Identity & Status */}
+        <div className="md:col-span-6 space-y-4">
           <div className="flex items-center gap-3">
             <img 
               src={customLogoUrl} 
-              alt="AUG Logo" 
+              alt="Wedding Granth Logo" 
               className="w-10 h-10 rounded-xl border-2 border-[#8B0000] object-cover bg-white shadow-md" 
             />
             <div>
-              <span className="font-serif font-bold text-lg tracking-tight text-white">Wedding Granth</span>
-              <p className="text-[10px] text-red-400 font-mono tracking-widest uppercase">AUG Escrow Ecosystem</p>
+              <div className="flex items-center gap-2">
+                <span className="font-serif font-bold text-lg tracking-tight text-white">Wedding Granth</span>
+                
+              </div>
+              <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase mt-0.5">AfterUs Global Technology Node</p>
             </div>
           </div>
-          <p className="text-xs text-gray-400 max-w-sm leading-relaxed">
-            India's premier escrow-backed wedding ecosystem. Securing client capital through a mandatory 40-40-20 milestone framework and zero-fraud guarantee.
+
+          <p className="text-xs text-gray-400 max-w-md leading-relaxed font-sans">
+            India's pioneering escrow-backed wedding infrastructure. Eliminating vendor fraud and securing capital through our automated 40-40-20 milestone framework.
           </p>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-gray-300">
-            <ShieldCheck size={14} className="text-green-500" />
-            <span>256-Bit Bank-Grade Escrow Vault Protected</span>
+
+          <div className="flex flex-wrap gap-2.5 pt-1">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/10 text-[10px] text-gray-300">
+              <ShieldCheck size={13} className="text-emerald-400" />
+              <span>256-Bit Escrow Vault Protected</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/10 text-[10px] text-gray-300">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span>All Systems Operational</span>
+            </div>
           </div>
         </div>
 
-        {/* Middle / Right: Quick Professional Links */}
-        <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4 font-mono">Platform</h4>
-            <ul className="space-y-2.5 text-xs text-gray-300 font-medium">
-              <li><Link to="/" className="hover:text-white transition-colors">Home Terminal</Link></li>
-              <li><Link to="/vibe-matcher" className="hover:text-white transition-colors">AI Vibe Matcher</Link></li>
-              <li><Link to="/checkout" className="hover:text-white transition-colors">Secure Checkout</Link></li>
+        {/* Right Cols: Startup Navigation Columns */}
+        <div className="md:col-span-6 grid grid-cols-2 gap-6">
+          
+          {/* Platform Column */}
+          <div className="space-y-3">
+            <h4 className="text-[11px] font-bold uppercase tracking-widest text-red-400 font-mono flex items-center gap-1.5">
+              <Globe size={12} /> Platform
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-300 font-medium">
+              <li>
+                <Link to="/" className="hover:text-white hover:translate-x-1 inline-block transition-all">
+                  Home Terminal
+                </Link>
+              </li>
+              <li>
+                <Link to="/vibe-matcher" className="hover:text-white hover:translate-x-1 inline-block transition-all">
+                  AI Vibe Matcher
+                </Link>
+              </li>
+              <li>
+                <Link to="/checkout" className="hover:text-white hover:translate-x-1 inline-block transition-all">
+                  Secure Checkout
+                </Link>
+              </li>
+              <li>
+                <Link to="/vendor-auth" className="hover:text-white hover:translate-x-1 inline-block transition-all">
+                  Vendor Portal
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4 font-mono">Administration</h4>
-            <ul className="space-y-2.5 text-xs text-gray-300 font-medium">
-              <li><Link to="/vendor-auth" className="hover:text-white transition-colors flex items-center gap-1">Vendor Portal <ArrowUpRight size={12} /></Link></li>
-              <li><Link to="/granthadmin-aug" className="hover:text-white transition-colors">🔒 Master Admin Terminal</Link></li>
-              <li><Link to="/granthadmin-aug" className="hover:text-white transition-colors">📞 Calling Team CRM</Link></li>
+          {/* Compliance & Trust Column */}
+          <div className="space-y-3">
+            <h4 className="text-[11px] font-bold uppercase tracking-widest text-red-400 font-mono flex items-center gap-1.5">
+              <Lock size={12} /> Compliance
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-400 font-medium">
+              <li className="hover:text-gray-200 transition-colors cursor-default">Startup India Recognized</li>
+              <li className="hover:text-gray-200 transition-colors cursor-default">PCI-DSS Payment Certified</li>
+              <li className="hover:text-gray-200 transition-colors cursor-default">ChatShield Active Node</li>
+              <li className="hover:text-gray-200 transition-colors cursor-default">Automated 100% Refund API</li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4 font-mono">Compliance</h4>
-            <ul className="space-y-2.5 text-xs text-gray-300 font-medium">
-              <li className="text-gray-400">Startup India Recognized</li>
-              <li className="text-gray-400">PCI-DSS Compliant</li>
-              <li className="text-gray-400">ChatShield Active</li>
-            </ul>
-          </div>
         </div>
 
       </div>
 
       {/* Bottom Sub-footer */}
-      
+      <div className="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-gray-500 relative z-10">
+        <p>© 2026 Wedding Granth (AfterUs Global Consultancy). All rights reserved.</p>
+        <div className="flex gap-5 font-medium text-gray-400">
+          <span className="hover:text-white transition-colors cursor-pointer">Privacy Protocol</span>
+          <span className="hover:text-white transition-colors cursor-pointer">Terms of Service</span>
+          <span className="hover:text-white transition-colors cursor-pointer">Security Audits</span>
+        </div>
+      </div>
+
     </footer>
   );
 }
